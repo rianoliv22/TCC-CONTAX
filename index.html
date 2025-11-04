@@ -46,6 +46,7 @@
     </nav>
     <div class="spacer"></div>
     <div id="who" class="muted"></div>
+    <button id="toggleTheme" class="out">🌙</button>
     <button class="out hide" id="btnStopAccess">Voltar</button>
     <button class="out hide" id="btnLogout">Sair</button>
   </header>
@@ -77,6 +78,12 @@
     <label for="adminPass">Senha do administrador</label>
     <input id="adminPass" type="password" placeholder="••••••••" />
   </div>
+
+  <div style="margin-top:6px;display:flex;align-items:center;gap:6px">
+  <input type="checkbox" id="toggleAdminPass" />
+  <label for="toggleAdminPass" style="font-size:13px;color:var(--muted)">Mostrar senha</label>
+</div>
+
 
   <div id="loginEmpresa" class="hide">
     <label for="empresaCnpj">CNPJ da Empresa</label>

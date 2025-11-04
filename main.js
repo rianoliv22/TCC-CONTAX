@@ -607,6 +607,14 @@ $('#formDAS')?.addEventListener('submit', e => {
   refreshDAS();
 });
 
+// Mostrar/ocultar senha do administrador
+$('#toggleAdminPass')?.addEventListener('change', e => {
+  const input = $('#adminPass');
+  if (!input) return;
+  input.type = e.target.checked ? 'text' : 'password';
+});
+
+
 // Operações de empresa
 function editEmpresa(id) {
   const company = getCompany(id);
@@ -652,3 +660,18 @@ function deleteNota(id) {
   refreshAll();
   showLogin();
 })();
+
+// Controle de tema (claro/escuro)
+const themeBtn = $('#toggleTheme');
+if (themeBtn) {
+  // Verifica tema salvo
+  const savedTheme = localStorage.getItem('contax_theme') || 'light';
+  document.body.classList.toggle('dark', savedTheme === 'dark');
+  themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+  themeBtn.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('contax_theme', isDark ? 'dark' : 'light');
+    themeBtn.textContent = isDark ? '☀️' : '🌙';
+  });
+}

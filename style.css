@@ -282,3 +282,40 @@ tr:hover td { background: #f8fdff; }
   to { opacity: 1; transform: translateY(0); }
 }
 /* --- FIM mensagem de erro no login --- */
+
+/* --- Tema escuro --- */
+body.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark .card,
+body.dark .login,
+body.dark .login.pro {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+body.dark .topbar {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .tab.active {
+  background: var(--cyan);
+  color: white;
+}
+
+body.dark .login-btn {
+  box-shadow: 0 8px 24px rgba(0, 188, 212, 0.2);
+}
+/* --- FIM tema escuro --- */
