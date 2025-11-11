@@ -32,18 +32,28 @@
       </div>
     </div>
 
-    <div class="spacer"></div>
     <nav class="nav hide" id="navTabs">
-      <button class="tab active" data-tab="dashboard">Dashboard</button>
+  <button class="tab active" data-tab="dashboard">Dashboard</button>
 
-      <!-- ADMIN: group entry points only -->
-      <button class="tab" data-tab="empresas-me" id="tabEmpresasME">Empresas ME</button>
-      <button class="tab" data-tab="empresas-mei" id="tabEmpresasMEI">Empresas MEI</button>
+  <!-- Abas da empresa ME -->
+  <button class="tab hide" data-tab="caixa">Caixa</button>
+  <button class="tab hide" data-tab="despesas">Despesas</button>
+  <button class="tab hide" data-tab="faturamento">Faturamento</button>
+  <button class="tab hide" data-tab="imposto">Imposto</button>
+  <button class="tab hide" data-tab="notas-emitidas-me">Notas Emitidas</button>
 
-      <!-- Global admin -->
-      <button class="tab" data-tab="empresas" id="tabEmpresas">Empresas (Admin)</button>
-      <button class="tab" data-tab="notas" id="tabNotas">Notas Fiscais</button>
-    </nav>
+  <!-- Abas da empresa MEI -->
+  <button class="tab hide" data-tab="imposto-das">Imposto (DAS)</button>
+  <button class="tab hide" data-tab="notas-emitidas-mei">Notas Emitidas</button>
+  <button class="tab hide" data-tab="controle-mensal">Controle Mensal</button>
+
+  <!-- ADMIN -->
+  <button class="tab hide" data-tab="empresas-me" id="tabEmpresasME">Empresas ME</button>
+  <button class="tab hide" data-tab="empresas-mei" id="tabEmpresasMEI">Empresas MEI</button>
+  <button class="tab hide" data-tab="empresas" id="tabEmpresas">Empresas (Admin)</button>
+  <button class="tab hide" data-tab="notas" id="tabNotas">Notas Fiscais</button>
+</nav>
+
     <div class="spacer"></div>
     <div id="who" class="muted"></div>
     <button id="toggleTheme" class="out">🌙</button>

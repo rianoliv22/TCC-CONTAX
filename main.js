@@ -116,25 +116,35 @@ function showApp() {
   $('[data-tab="dashboard"]').classList.remove('hide');
 
   // Mostrar abas apropriadas
-  if (state.user.role === 'admin') {
-    $('[data-tab="empresas"]').classList.remove('hide');
-    $('[data-tab="notas"]').classList.remove('hide');
-    $('[data-tab="empresas-me"]').classList.remove('hide');
-    $('[data-tab="empresas-mei"]').classList.remove('hide');
-  } else {
-    const empresa = getCompany(effId);
-    if (empresa?.tipo === 'ME') {
-      $('[data-tab="caixa"]').classList.remove('hide');
-      $('[data-tab="despesas"]').classList.remove('hide');
-      $('[data-tab="faturamento"]').classList.remove('hide');
-      $('[data-tab="imposto"]').classList.remove('hide');
-      $('[data-tab="notas-emitidas-me"]').classList.remove('hide');
-    } else if (empresa?.tipo === 'MEI') {
-      $('[data-tab="imposto-das"]').classList.remove('hide');
-      $('[data-tab="notas-emitidas-mei"]').classList.remove('hide');
-      $('[data-tab="controle-mensal"]').classList.remove('hide');
-    }
+if (state.user.role === 'admin') {
+  // Abas visíveis apenas para administradores
+  [
+    'dashboard', 'empresas', 'notas', 'empresas-me', 'empresas-mei'
+  ].forEach(tab => $(`[data-tab="${tab}"]`).classList.remove('hide'));
+
+} else {
+  // Abas visíveis para empresas
+  const empresa = getCompany(effectiveCompanyId());
+
+  if (empresa?.tipo === 'ME') {
+    // Empresa ME
+    [
+      'dashboard', 'caixa', 'despesas', 'faturamento', 'imposto', 'notas-emitidas-me'
+    ].forEach(tab => $(`[data-tab="${tab}"]`).classList.remove('hide'));
+  } 
+  else if (empresa?.tipo === 'MEI') {
+    // Empresa MEI
+    [
+      'dashboard', 'imposto-das', 'notas-emitidas-mei', 'controle-mensal'
+    ].forEach(tab => $(`[data-tab="${tab}"]`).classList.remove('hide'));
   }
+
+  // Esconde abas de admin
+  [
+    'empresas', 'notas', 'empresas-me', 'empresas-mei'
+  ].forEach(tab => $(`[data-tab="${tab}"]`).classList.add('hide'));
+}
+
 
   // Aba padrão ativa
   $$('button.tab').forEach(b => b.classList.remove('active'));
@@ -189,6 +199,13 @@ function setAppEditable(editable) {
     if (el.closest('.nav')) return;
     el.disabled = !editable;
   });
+
+  if (!isAdmin()) {
+  document.querySelectorAll('.admin-only').forEach(el => el.classList.add('hide'));
+} else {
+  document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hide'));
+}
+
 }
 
 /********************
